@@ -6,7 +6,7 @@ const util = require('util'),
 
 module.exports = {};
 const shadowBannedUsers = [
-    '200065909417705472'
+    '138434663986233344'
 ];
 module.exports.hook = 'message';
 module.exports.emit = function (msg) {
@@ -16,7 +16,9 @@ module.exports.emit = function (msg) {
     for(let x of shadowBannedUsers)
         if(msg.author.id === x)
             return;
-
+    if(global.production)
+        if(msg.content.includes('(╯°□°）╯︵ ┻━┻'))
+            return msg.reply('┬──┬ ノ( ゜-゜ノ)');
     let isPrefixed = false;
     let prefix = '';
     for(let pfx of prefixes)

@@ -2,7 +2,9 @@
 
 const requestify = require('requestify');
 let after = 't3_4mu7rz';
-
+try {
+    dbClient.query("CREATE TABLE IF NOT EXISTS PASTA(origin TEXT, content TEXT)")
+}catch(e) {}
 function runFor() {
     console.log("running");
     requestify.get('https://www.reddit.com/r/copypasta/new.json?sort=top' + (after !== '' ? '&after=' + after : ''))
@@ -29,4 +31,4 @@ function addToDatabase(text, permalink) {
     dbClient.query('INSERT INTO pasta(origin, content) VALUES($1, $2)', [permalink, text]);
 }
 
-//runFor();
+runFor();

@@ -5,6 +5,8 @@ const pg = require('pg');
 global.__approot = __dirname;
 global.config = require(__approot + '/config.json');
 
+global.production = true;
+
 global.dbClient = undefined;
 try {
     global.dbClient = new pg.Client(config.databaseURI);
