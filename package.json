@@ -15,8 +15,6 @@
     "discord.js": "^8.0.0",
     "giphy-api": "^1.1.17",
     "imgur": "^0.1.7",
-    "lame": "^1.2.4",
-    "npm-install-missing": "^0.1.4",
     "pg": "^6.0.1",
     "request": "^2.72.0",
     "requestify": "^0.1.17",
