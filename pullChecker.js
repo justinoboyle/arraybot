@@ -7,9 +7,12 @@ if (global.production)
                     if (global.production)
                         if (stdout.toLowerCase().trim() == "need to pull") {
                             bot.sendMessage(bot.owner, "Re-cloning and re-deploying. Be back in a minute or two! 👋");
-                            process.exit(0);
+                            setTimeout(() => {
+                                process.exit(0);
+                            }, 1000);
+
                         }
-                            
+
                 });
     }, 7000);
 
@@ -17,5 +20,5 @@ if (global.production)
     setInterval(() => {
         if (global.production)
             exec(`git remote update`,
-                (error, stdout, stderr) => {});
+                (error, stdout, stderr) => { });
     }, 2000);
