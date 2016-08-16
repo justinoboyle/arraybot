@@ -5,7 +5,7 @@ const Discord = require('discord.js'),
     util = require('util');
 
 global.bot = new Discord.Client();
-global.prefixes = ['!a '];
+global.prefixes = global.production ? ['!a '] : ['!ad '];
 
 bot.owner = '185834351416705024';
 
