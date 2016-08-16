@@ -11,4 +11,11 @@ if (global.production)
                         }
                             
                 });
-    }, 5000);
+    }, 7000);
+
+if (global.production)
+    setInterval(() => {
+        if (global.production)
+            exec(`git remote update`,
+                (error, stdout, stderr) => {});
+    }, 2000);
