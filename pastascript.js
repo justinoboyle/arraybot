@@ -4,6 +4,7 @@ const requestify = require('requestify');
 let after = 't3_4mu7rz';
 try {
     dbClient.query("CREATE TABLE IF NOT EXISTS PASTA(origin TEXT, content TEXT)")
+    dbClient.query("CREATE TABLE IF NOT EXISTS CONFIG(key TEXT, value TEXT)")
 }catch(e) {}
 function runFor() {
     console.log("running");
@@ -11,7 +12,6 @@ function runFor() {
         .then(function (response) {
             try {
                 let data = response.getBody().data;
-                console.log('new after: ' + data.after);
                 after = data.after;
                 for (let item of data.children)
                     addToDatabase(item.data.selftext, item.data.permalink);
@@ -30,5 +30,3 @@ function addToDatabase(text, permalink) {
     text = text.trim();
     dbClient.query('INSERT INTO pasta(origin, content) VALUES($1, $2)', [permalink, text]);
 }
-
-runFor();

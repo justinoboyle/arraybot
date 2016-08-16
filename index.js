@@ -5,8 +5,13 @@ const pg = require('pg');
 global.__approot = __dirname;
 global.config = require(__approot + '/config.json');
 
-global.production = true;
+global.production = false;
 
+for(let x of process.argv)
+    if(x.toLowerCase() == "production")
+        global.production = true;
+
+console.log("Production mode: " + global.production);
 global.dbClient = undefined;
 try {
     global.dbClient = new pg.Client(config.databaseURI);
@@ -14,7 +19,7 @@ try {
         if (err)
             return console.log(err);
         console.log("Connected to Postgres!");
-        require('./pastascript.js');
+        // require('./pastascript.js');
         global.discordHook = require(__approot + '/discord/discordHook.js');
     });
 } catch (e) {
