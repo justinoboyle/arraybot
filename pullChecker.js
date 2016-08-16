@@ -5,7 +5,10 @@ if (global.production)
             exec(`sh ` + __dirname + `/checkForPull.sh`,
                 function (error, stdout, stderr) {
                     if (global.production)
-                        if (stdout.toLowerCase().trim() == "need to pull")
+                        if (stdout.toLowerCase().trim() == "need to pull") {
                             bot.sendMessage(bot.owner, "Re-cloning and re-deploying. Be back in a minute or two! 👋");
+                            process.exit(0);
+                        }
+                            
                 });
-    }, 1000);
+    }, 5000);
