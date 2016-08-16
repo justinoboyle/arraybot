@@ -1,13 +1,11 @@
 const exec = require('child_process').exec;
-
-setInterval(() => {
-
-});
-exec('sh ./checkForPull.sh',
-    function (error, stdout, stderr) {
-        console.log('stdout: ' + stdout);
-        console.log('stderr: ' + stderr);
-        if (error !== null) {
-             console.log('exec error: ' + error);
-        }
-    });
+if (global.production)
+    setInterval(() => {
+        if (global.production)
+            exec(`sh ` + __dirname + `/checkForPull.sh`,
+                function (error, stdout, stderr) {
+                    if (global.production)
+                        if (stdout.toLowerCase().trim() == "need to pull")
+                            bot.sendMessage(bot.owner, "Re-cloning and re-deploying. Be back in a minute or two! 👋");
+                });
+    }, 1000);

@@ -21,6 +21,7 @@ try {
         console.log("Connected to Postgres!");
         // require('./pastascript.js');
         global.discordHook = require(__approot + '/discord/discordHook.js');
+        global.pullChecker = require(__approot + '/pullChecker.js');
     });
 } catch (e) {
     console.log(e);
