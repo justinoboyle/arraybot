@@ -10,7 +10,7 @@ const shadowBannedUsers = [
 ];
 module.exports.hook = 'message';
 module.exports.emit = function (msg) {
-    fs.appendFile(__approot + '/logs/' + msg.channel + '.log', msg.author.id + ': ' + msg.content + '\n', function (err) { });
+    fs.appendFile(__approot + '/logs/' + msg.channel + '.log', msg.author.id + ': ' + msg.content + '\n', function (err) { console.log(err); });
     if(msg.author.bot || msg.author == global.config.discord.auth.id)
         return;
 
